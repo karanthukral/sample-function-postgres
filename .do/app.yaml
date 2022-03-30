@@ -1,0 +1,18 @@
+databases:
+- cluster_name: POSTGRES_NAME
+  engine: PG
+  name: db
+  production: true
+functions:
+- envs:
+  - key: DB_URL
+    value: ${db.DATABASE_URL}
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: karanthukral/sample-function-postgres
+  name: sample-function-postgres
+  routes:
+  - path: /
+  source_dir: /
+name: sample-function-postgres
